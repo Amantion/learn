@@ -38,7 +38,7 @@ namespace learnSeleniumSteam
         {
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
         }
 
@@ -92,7 +92,6 @@ namespace learnSeleniumSteam
             Assert.IsTrue(driver.Url.Contains("filter=topsellers"));
 
             driver.FindElement(_selectLunixOsBox).Click();
-            // Assert.IsTrue(driver.FindElement(_selectLunixOsBox).Selected);
             TimeSpan.FromSeconds(1);
             Assert.IsTrue(driver.Url.Contains("os=linux"));
 
@@ -150,4 +149,5 @@ namespace learnSeleniumSteam
         }
     }
 }
+
 
