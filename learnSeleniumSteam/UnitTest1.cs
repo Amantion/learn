@@ -92,19 +92,16 @@ namespace learnSeleniumSteam
             Assert.IsTrue(driver.Url.Contains("filter=topsellers"));
 
             driver.FindElement(_selectLunixOsBox).Click();
-            TimeSpan.FromSeconds(1);
             Assert.IsTrue(driver.Url.Contains("os=linux"));
 
             wait.Until(driver => driver.FindElement(_coopTypeMenu));
             driver.FindElement(_coopTypeMenu).Click();
             wait.Until(driver => driver.FindElement(_coopTypeLinux));
             driver.FindElement(_coopTypeLinux).Click();
-            TimeSpan.FromSeconds(1);
             Assert.IsTrue(driver.Url.Contains("category3=48"));
 
             wait.Until(driver => driver.FindElement(_gameTagAction));
             driver.FindElement(_gameTagAction).Click();
-            TimeSpan.FromSeconds(1);
             Assert.IsTrue(driver.Url.Contains("tags=19"));
 
             Thread.Sleep(2000); 
@@ -113,7 +110,6 @@ namespace learnSeleniumSteam
             int searchResultValue;
             int.TryParse(string.Join("", (driver.FindElement(_searchResultQuantity).Text).Where(c => char.IsDigit(c))), out searchResultValue);
             driver.FindElement(By.Id("footer_logo_steam")).Click();
-            TimeSpan.FromSeconds(5);
             driver.FindElement(By.Id("footer_logo_steam")).Click();
 
             Thread.Sleep(2000);
@@ -129,6 +125,7 @@ namespace learnSeleniumSteam
             int.TryParse(string.Join("", (driver.FindElement(_firstGamePrice).Text).Where(c => char.IsDigit(c))), out firstGameFinalPrice);
 
             driver.FindElement(_firstGameName).Click();
+            Assert.IsTrue(driver.Url.Contains("/app/"));
 
             var currentGameName = driver.FindElement(By.Id("appHubAppName")).Text;
             Assert.AreEqual(firstGameName, currentGameName);
